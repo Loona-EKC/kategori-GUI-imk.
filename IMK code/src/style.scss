@@ -1,0 +1,74 @@
+@import "compass";
+$particles: 600; 
+$radius: 50vmin; 
+$particle_size: 15vmin; 
+$initial_scale: .1; 
+$animation_duration: 2500ms;
+$bg_color: #FFF;
+$base_hue: 60; 
+$hue_shift: -160; 
+$shadows: true; 
+$animation_ease: cubic-bezier(0.125, 0, 0.410, 0); 
+$animation_direction: reverse; 
+$π: pi();
+
+@function calcCoords($p: 100) {
+  $θ: 2*$π*(random($p) * (1/$p));
+  $u: (random($p) * (1/$p))+(random($p) * (1/$p));
+  $r: null;
+  @if ($u > 1) { $r: 2 - $u; }
+  @else { $r: $u;  }
+  $x: $r * cos($θ);
+  $y: $r * sin($θ);
+  $c: sqrt(pow($x,2) + pow($y,2)); //hypoteneuse
+  $coords: ($x, $y, $c);
+  @return $coords;
+}
+
+html, body { 
+  height: 100%;
+  min-height: 100vh;
+  background-color: $bg_color;
+}
+
+.particle {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+  width: $particle_size;
+  height: $particle_size;
+  border-radius: 50%;
+  @if($shadows){
+    box-shadow: 0 ($particle_size*.2) ($particle_size*.2) rgba(0,0,0,.3), 
+                0 (-$particle_size*.4) ($particle_size*.2) rgba(0,0,0,.1) inset,
+                0 ($particle_size*.6) ($particle_size*.2) rgba(255,255,255,.1) inset;
+  }
+  opacity: 0;
+  animation: doit $animation_duration infinite $animation_ease;
+  animation-direction: $animation_direction;
+}
+
+$i: 1;
+@for $i from $i through $particles {
+  $coords: calcCoords();
+  $x: nth($coords, 1) * $radius;
+  $y: nth($coords, 2) * $radius;
+  $c: nth($coords, 3); 
+  $d: sin($c * $π / 2); 
+  #particle#{$i} {
+    background: hsla($base_hue + $d * $hue_shift, 100%, (80% - 30% * $d), 1);
+    transform: translateX($x) translateY($y) scale(1 - $d);
+    animation-delay: -1 * random($animation_duration) + ms;
+  
+  }
+}
+
+@keyframes doit {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  100% { 
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale($initial_scale);
+  } 
+}
+

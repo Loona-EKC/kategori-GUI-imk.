@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Notepad 📝</title>
+    <link rel="stylesheet" href="noteCSS.css"> 
+</head>
+<body>
+
+    <!-- Efek Partikel Glowing -->
+    <div class="glowing-container">
+        <div class="glowing"><span style="--i:1;"></span><span style="--i:2;"></span><span style="--i:3;"></span></div>
+        <div class="glowing"><span style="--i:1;"></span><span style="--i:2;"></span><span style="--i:3;"></span></div>
+        <div class="glowing"><span style="--i:1;"></span><span style="--i:2;"></span><span style="--i:3;"></span></div>
+        <div class="glowing"><span style="--i:1;"></span><span style="--i:2;"></span><span style="--i:3;"></span></div>
+    </div>
+
+    <!-- Notepad -->
+    <div class="container">
+        <h1>📝 Modern Notepad</h1>
+        <div class="buttons">
+            <button onclick="openFile()">📂 Open</button>
+            <button onclick="saveFile()">💾 Save</button>
+            <button onclick="clearText()">🗑️ Clear</button>
+            <button onclick="goHome()">🏠 Home</button>
+        </div>
+        <textarea id="notepad" placeholder="Tulis catatan di sini..."></textarea>
+    </div>
+
+    <script src="noteS.js"></script>
+</body>
+</html>

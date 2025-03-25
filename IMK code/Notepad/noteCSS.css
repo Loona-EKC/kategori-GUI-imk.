@@ -1,0 +1,109 @@
+/* Reset default margin dan padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Container utama */
+.container {
+    width: 900vw;
+    max-width: 800px;
+    background: #25252565;
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 0px 5px 24px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* Judul */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Tombol */
+.buttons {
+    margin-bottom: 10px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    height: 300px;
+    background: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+}
+
+
+.glowing {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+              0 0 40px rgba(255, 255, 255, 0.6), 
+              0 0 60px rgba(255, 255, 255, 0.4);
+  animation: floatUp 5s infinite alternate ease-in-out;
+}
+
+/* Animasi untuk membuat bola bergerak */
+@keyframes floatUp {
+  0% {
+      transform: translateY(0);
+      opacity: 0.7;
+  }
+  100% {
+      transform: translateY(-50px);
+      opacity: 1;
+  }
+}
+
+/* Warna-warna neon */
+.glowing:nth-child(3n + 1) {
+  background: rgb(255, 0, 212);
+}
+
+.glowing:nth-child(3n + 2) {
+  background: rgba(255, 214, 0, 1);
+}
+
+.glowing:nth-child(3n + 3) {
+  background: rgb(68, 0, 255);
+}
